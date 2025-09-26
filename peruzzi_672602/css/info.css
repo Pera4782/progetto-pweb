@@ -1,0 +1,41 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(35, 35, 35);
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+div{
+    width: 95%;
+    height: 95%;
+}
+
+#home_page{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: rgb(56, 56, 56);
+    border: none;
+    outline: none;
+    color: white;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 10px;
+    font-weight: bold;
+    font-size: 2vh;
+    border-radius: 5px;
+}
+
+#home_page:hover{
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+}
+
+

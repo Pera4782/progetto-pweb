@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/pezzi/pawn_white.svg">
+    <title>Chess</title>
+    <link rel="stylesheet" href="../css/info.css">
+    <script>
+        document.addEventListener('DOMContentLoaded',() => 
+            document.getElementById('home_page').addEventListener('click',() => window.location.href = '../index.php'))
+    </script>
+</head>
+<body>
+    <div>
+
+        Il sito offre un serivizio per il gioco degli scacchi in 3 modalità
+        <ul>
+            <li>Blitz (3 minuti + 2 secondi per mossa)</li>
+            <li>Rapid (12 minuti + 3 secondi per mossa)</li>
+            <li>Standard (60 minuti + 30 secondi per mossa)</li>
+        </ul>
+
+        Durante ogni partita è possibile mettere in pausa ed eventualmente arrendersi attraverso gli appositi pulsanti, per giocare è necessario fare log in con
+        2 account all'interno della pagina principale scegliere la modalità e premere il tasto "PLAY". <br>
+        All'inerno della pagina principale si può aprire un menù a tendina situato in alto a destra che permette di accedere
+        a varie pagine:
+        <ul>
+            <li>Info Page (pagina attuale)</li>
+            <li>Sign In (pagina per creare gli account)</li>
+            <li>Top Five (pagina che offre una classifica dei primi 5 giocatori con più elo)</li>
+            <li>Delete Account (pagina per eliminare gli account)</li>
+        </ul> 
+
+        Infine il sito offre la possibilità di accedere ad uno storico delle ultime 5 partite effettuate da un giocatore,
+        per fare questo basterà premere il tasto "CHECK GAMES" situato nella home page e successivamente fare il log in
+        con l'account di quale si desidera consultare lo storico
+
+    </div>
+    <button id="home_page">Return to home page</button>
+</body>
+</html>

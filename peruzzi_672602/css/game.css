@@ -1,0 +1,335 @@
+
+body{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "a1 a2 a3";
+    background-color: rgb(35, 35, 35);
+    margin: 0px;
+    height: 100vh;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+
+.player_container{
+    
+    height: 80vh;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+#white_player{
+    background-color: white;
+    color: black;
+    
+}
+
+#black_player{
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
+}
+
+#left{grid-area: a1;}
+#right{grid-area: a3;}
+
+.player_container> :first-child{
+    height: fit-content;
+    font-size: 6vh;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.player_container > :first-child > img {
+    display: block;
+    height: 10vh;
+    aspect-ratio: 1/1;
+
+    /*trovato online, source: https://stackoverflow.com/questions/12690444/css-border-on-png-image-with-transparent-parts*/
+
+    filter: drop-shadow(1px 1px 0 white)
+            drop-shadow(-1px 1px 0 white)
+            drop-shadow(1px -1px 0 white)
+            drop-shadow(-1px -1px 0 white);
+    margin-bottom: 10px;
+}
+
+
+#white_player,
+#black_player {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 0px;
+}
+
+
+.timer {
+
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: fit-content;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.timer div{
+    font-size: 7vh;
+    color: white;
+}
+.timer img {
+    margin-right: 10px;
+    height: 10vh;
+}
+
+.capture_box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 20vh;
+    width: 100%;
+    background-color: rgb(56, 56, 56);
+    padding: 0px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.capture_box div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vh;
+    color: white;
+}
+
+.capture_box img {
+    display: block;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+/*TABELLA*/
+
+#board{
+    aspect-ratio: 1/1;
+    height: 90vh;
+    grid-area: a2;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+
+table{
+    border-collapse: collapse;
+    border: thick solid black;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(19, 72, 0);
+}
+
+td div img {
+    width: 80%;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+td div img:hover{
+
+    /*trovato online, source: https://stackoverflow.com/questions/12690444/css-border-on-png-image-with-transparent-parts*/
+
+    filter: drop-shadow(2px 2px 0 yellow)
+            drop-shadow(-2px 2px 0 yellow)
+            drop-shadow(2px -2px 0 yellow)
+            drop-shadow(-2px -2px 0 yellow);
+}
+
+td{
+    height:10%;
+    width: 10%;
+    padding: 0px;
+    margin: 0px;
+}
+
+td div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+table tr:nth-child(2n) td:nth-child(2n),
+table tr:nth-child(2n+1) td:nth-child(2n+1) {
+    background-color: white;
+}
+
+.yellow_dot {
+    background-color: rgba(176, 182, 0, 0.472);
+    height: 20%;
+    width: 20%;
+    margin: auto;
+    border-radius: 100px;
+}
+
+.red_box {
+    background-color: rgba(255, 14, 14, 0.796);
+    margin: auto;
+    border-radius: 0px;
+}
+
+
+
+
+#container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.8);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*PROMOZIONE*/
+
+.promotion_box {
+    height: 50%;
+    background-color: rgb(56, 56, 56);
+    text-align: center;
+    margin: 20px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+}
+
+.promotion_box:hover{
+    background-color: orange;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.promotion_box_container {
+    height: 30%;
+    width: 40%;
+    display: flex;
+    background-color: rgb(35, 35, 35);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+
+.promotion_box img {
+    height: 90%;
+    width: 90%;
+}
+
+
+/* MENU GENERALE (PAUSA / VITTORIA)*/
+
+#menu {
+    height: fit-content;
+    width: 20%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgba(35, 35, 35, 0.906);
+    border-radius: 10px;
+    color: white;
+}
+
+#menu > h1{
+    height: 5vh;
+    margin: 0px;
+}
+
+#menu > img {
+    height: 100%;
+    width: 100%;
+}
+
+#menu > #img_container{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#menu > button {
+    width: 95%;
+    height: 5vh;
+    margin-bottom: 10px;
+    font-size: 3vh;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border: none;
+}
+
+#menu > button:hover{
+    background-color: orange;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+
+
+/*PAUSA*/
+
+
+#pause{
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    border-radius: 0px;
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 2vh;
+    background-color: rgb(56, 56, 56);
+    color: white;
+    font-weight: bold;
+}
+
+#pause:hover{
+    background-color: orange;
+    transition: background-color 0.3s ease;
+    color: black;
+    cursor: pointer;
+}

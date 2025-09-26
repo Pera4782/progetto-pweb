@@ -1,0 +1,320 @@
+body {
+
+    display: grid;
+    grid-template-areas:"a1 a1"
+                        "b1 b2"
+                        "c1 c1"
+                        "d1 d2";
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 0.7fr 1fr;
+
+    height: 100vh;
+    width: 100%;
+
+    background-color: rgb(35, 35, 35);
+
+    color: white;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+
+#title {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    grid-area: a1;
+
+    align-self: center;
+    justify-self: center;
+    height: 100%;
+    width: 30%;
+
+    font-weight: bold;
+    font-size: 15vh;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+}
+
+#title>img {
+
+    display: block;
+    height: 15vh;
+    aspect-ratio: 1/1;
+
+}
+
+
+#left {
+    grid-area: b1;
+}
+
+#right {
+    grid-area: b2;
+}
+
+.login_box {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+    width: 100%
+}
+
+h1{
+    margin-top: 0px;
+    font-size: 4vh;
+    font-weight: 800;
+}
+
+.login_box > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    height: 60%;
+    width: 60%;
+    background-color: rgb(56, 56, 56);
+    border-radius: 10px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.login_box > div > input {
+
+    align-self: center;
+    justify-self: left;
+
+    background-color: grey;
+    border: 2px solid grey;
+    outline: none;
+    height: 70%;
+    width: 90%;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 2vh;
+    padding-left: 7px;
+}
+
+.login_box>div>input:focus {
+    border: 2px solid black;
+}
+
+.login_box > div > label {
+    align-self: center;
+    justify-self: center;
+
+    font-size: 3.5vh;
+    font-weight: 900;
+    font-family: sans-serif;
+}
+
+.login_box > div > button,
+.logged_player>:last-child>button {
+    align-self: center;
+    justify-self: center;
+
+    background-color: grey;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+
+    font-weight: bold;
+    font-size: 3vh;
+
+    height: fit-content;
+    width: fit-content;
+    padding: 3px 10px;
+}
+
+
+
+
+.logged_player > .text {
+    align-self: center;
+    justify-self: left;
+    margin-left: 5vh;
+    font-size: 3.5vh;
+    font-weight: 900;
+    font-family: sans-serif;
+}
+
+.logged_player>:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.logged_player>:last-child>button{
+    margin-left: 5vh;
+}
+
+
+#mode_container {
+    grid-area: c1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#mode_container > button {
+    margin: 0px 10px;
+    height: 30%;
+    width: 10%;
+    background-color: rgb(56, 56, 56);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-family: sans-serif;
+    color: white;
+    font-size: 2vh;
+    font-weight: bold;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 1);
+}
+
+#mode_container > .selected_mode,
+#mode_container > .selected_mode:hover {
+    background-color: grey;
+    color: black;
+    box-shadow: none;
+}
+
+
+#play_button {
+    grid-area: d1;
+    align-self: center;
+    justify-self: right;
+    height: 85%;
+    width: 50%;
+    font-size: 6.5vh;
+    font-weight: bold;
+    box-shadow: 0px 5px 0px rgba(0, 0, 0, 1);
+    background-color: rgb(56, 56, 56);
+    color: lightgray;
+    border: none;
+    border-radius: 10px;
+    margin-right: 40px;
+    border-bottom: 3px rgb(19, 19, 19);
+}
+
+
+
+
+#check_games_button {
+    grid-area: d2;
+    align-self: center;
+    justify-self: left;
+    height: 85%;
+    width: 50%;
+    font-size: 6.5vh;
+    font-weight: bold;
+    box-shadow: 0px 5px 0px rgba(0, 0, 0, 1);
+    background-color: rgb(56, 56, 56);
+    color: lightgray;
+    border: none;
+    border-radius: 10px;
+    margin-left: 40px;
+}
+
+.closed_menu{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: fit-content;
+    width: 10vw;
+}
+
+.open_menu{
+    background-color: rgb(56, 56, 56);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5vh 0px;
+    width: 20vw;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    z-index: 5;
+}
+
+#close{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#menu  > button{
+    background-color: grey;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 4vh;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px;
+}
+
+#menu img {
+    height: 5vh;
+    display: block;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+#log_out_1:hover,
+#log_out_2:hover,
+#sign_in:hover,
+#info_page:hover,
+#play_button:hover,
+#check_games_button:hover,
+#mode_container > button:hover,
+.login_box>div>button:hover,
+#menu>button:hover{
+    background-color: orange;
+    color: black;
+    transition: background-color 0.1s ease;
+}
+
+.error_message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(156, 0, 0);
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vh;
+    font-weight: bold;
+    padding: 20px 10px;
+    font-family: sans-serif;
+}
+
+

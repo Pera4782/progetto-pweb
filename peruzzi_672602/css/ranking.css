@@ -1,0 +1,118 @@
+body{
+    background-color: rgb(35, 35, 35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+}
+
+#title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+    font-size: 10vh;
+    font-weight: bold;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+}
+
+img{
+    height: 12vh;
+}
+
+
+#container{
+    background-color: rgb(56, 56, 56);
+    height: 70vh;
+    width: 35vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 1);
+}
+
+table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border: none;
+}
+
+
+thead > tr > td{
+    height: 5vh;
+}
+
+
+thead > tr > td > div{
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2.5vh;
+}
+
+tbody > tr > td > div{
+    width: 100%;
+    height: 10vh;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    font-size: 3vh;
+    padding: 0px;
+}
+
+tbody>tr:nth-child(odd):hover,
+tbody>tr:nth-child(even):hover{
+    background-color: orange;
+    color: black;
+}
+tbody>tr:nth-child(odd){
+    background-color: rgb(38, 38, 38);
+}
+tbody>tr:nth-child(even){
+    background-color: rgb(56, 56, 56);
+}
+
+.first_col{
+    width: 20%;
+}
+.third_col{
+    width: 25%;
+}
+#home_page:hover {
+    cursor: pointer;
+    background-color: orange;
+    color: black;
+    transition: background-color 0.1 ease;
+}
+
+
+#home_page {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: rgb(56, 56, 56);
+    border: none;
+    outline: none;
+    color: white;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px 10px;
+    font-weight: bold;
+    font-size: 2vh;
+    border-radius: 5px;
+}
