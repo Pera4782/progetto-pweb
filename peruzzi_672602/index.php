@@ -24,7 +24,7 @@ session_destroy();
 
 <body>
     <div id="menu" class="closed_menu">
-        <img src="images/menu.svg" id="menu_icon">
+        <img src="images/menu.svg" id="menu_icon" alt="">
     </div>
     <div id="title">
         <img src="images/pezzi/rook_white.svg" alt="">
