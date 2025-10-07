@@ -96,9 +96,8 @@ class game_status
     public $board;
     public $turn;
     public $end_game_status;
-    public $moves;
 
-    public function __construct($white_player, $black_player, $initial_time, $time_increment, $board, $turn, $moves)
+    public function __construct($white_player, $black_player, $initial_time, $time_increment, $board, $turn)
     {
         $this->white_player = $white_player;
         $this->black_player = $black_player;
@@ -107,7 +106,6 @@ class game_status
         $this->board = $board;
         $this->turn = $turn;
         $this->end_game_status = ['condition' => 0, 'color' => null];
-        $this->moves = $moves;
     }
 }
 ?>

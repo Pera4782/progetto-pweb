@@ -33,42 +33,6 @@ class Piece {
 }
 
 
-class Move {
-    constructor(old_i, old_j, new_i, new_j){
-        this.old_i = old_i
-        this.old_j = old_j
-        
-        this.new_i = new_i
-        this.new_j = new_j
-    }
-}
-
-class Promotion extends Move {
-    constructor(old_i, old_j, new_i, new_j, new_piece){
-        super(old_i, old_j, new_i, new_j)
-        this.new_piece = new_piece
-    }
-}
-
-class Castling extends Move{
-    constructor(old_i, old_j, new_i, new_j, old_rook_i,old_rook_j, new_rook_i, new_rook_j){
-        super(old_i, old_j, new_i, new_j)
-        this.old_rook_i = old_rook_i
-        this.old_rook_j = old_rook_j
-        this.new_rook_i = new_rook_i
-        this.new_rook_j = new_rook_j
-    }
-}
-
-class En_passant extends Move{
-    constructor(old_i, old_j, new_i, new_j, eaten_pawn_i, eaten_pawn_j){
-        super(old_i, old_j, new_i, new_j)
-        this.eaten_pawn_i = eaten_pawn_i
-        this.eaten_pawn_j = eaten_pawn_j
-    }
-}
-
-
 class Game {
 
     constructor() {
@@ -89,8 +53,6 @@ class Game {
         this.white_turn = true
         this.paused = false
         this.timer = null
-
-        this.moves = []
 
     }
 
@@ -131,7 +93,6 @@ class Game {
         this.players.white.attacked_pos = calc_attacked_pos('white', this.board, this.players)
         this.players.black.attacked_pos = calc_attacked_pos('black', this.board, this.players)
 
-        this.moves = []
 
         await this.send_status()
         await send_end_game(0, null)
@@ -167,8 +128,6 @@ class Game {
 
         this.players.white.attacked_pos = calc_attacked_pos('white', this.board, this.players)
         this.players.black.attacked_pos = calc_attacked_pos('black', this.board, this.players)
-
-        this.moves = info.moves
 
         init_interface(this)
         this.init_timer()
@@ -209,7 +168,6 @@ class Game {
         const json_init_time = JSON.stringify(this.INITIAL_TIME)
         const json_time_increment = JSON.stringify(this.TIME_INCREMENT)
         const json_turn = JSON.stringify(this.white_turn)
-        const json_moves = JSON.stringify(this.moves)
 
         const data = new FormData()
         data.append('board', json_board)
@@ -323,18 +281,17 @@ class Game {
         }
 
         let castling_flag = false
-        let move = null
 
         if (this.board[i][j].type === 'rook' && this.board[i][j].color === OLD_COLOR) { //castling
 
-            move = this.castling(i, j, OLD_COLOR)
+            this.castling(i, j, OLD_COLOR)
             castling_flag = true
 
         } else if (OLD_TYPE === 'pawn' && Math.abs(j - this.previous_clicked_box.j) === 1 && this.board[i][j].type === null)  //EN PASSANT
 
-            move = this.en_passant(i, j)
+            this.en_passant(i, j)
 
-        else move = this.regular_move(i, j) //MOVIMENTO REGOLARE
+        else this.regular_move(i, j) //MOVIMENTO REGOLARE
 
         //se ho mosso un pedone setto i suoi campi en passant a false
         if (this.board[i][j].type === 'pawn') {
@@ -359,7 +316,6 @@ class Game {
 
         //se non c'è stata una promozione aggiorno lo stato in modo regolare
         if (!promo_flag){
-            this.moves.push(move)
             this.update_status(OLD_COLOR)
         }
         let condition = this.win_check()
@@ -384,11 +340,6 @@ class Game {
 
         this.players[color].king_status.i = this.previous_clicked_box.i
         this.players[color].king_status.j = king_step + this.previous_clicked_box.j
-
-        const move = new Castling(this.previous_clicked_box.i, this.previous_clicked_box.j, this.previous_clicked_box.i, this.previous_clicked_box.j + king_step,
-            rook_i, rook_j, rook_i, rook_step + rook_j
-        )
-        return move
     }
 
     en_passant(i, j) {
@@ -401,8 +352,6 @@ class Game {
         this.board[i][j] = this.board[this.previous_clicked_box.i][this.previous_clicked_box.j]
         this.board[this.previous_clicked_box.i][this.previous_clicked_box.j] = new Piece(null, null)
 
-        let move = new En_passant(this.previous_clicked_box.i,this.previous_clicked_box.j,i,j,i - step, j)
-        return move
     }
 
     regular_move(i, j) {
@@ -415,8 +364,6 @@ class Game {
 
         this.board[i][j] = this.board[this.previous_clicked_box.i][this.previous_clicked_box.j]
         this.board[this.previous_clicked_box.i][this.previous_clicked_box.j] = new Piece(null, null)
-        let move = new Move(this.previous_clicked_box.i,this.previous_clicked_box.j,i,j)
-        return move
     }
 
 
@@ -433,8 +380,6 @@ class Game {
     promote(i, j, chosen_piece, color) {
         this.board[i][j] = new Piece(chosen_piece, color)
         draw(this.board, this.players)
-        let promotion = new Promotion(this.previous_clicked_box.i, this.previous_clicked_box.j, i, j,chosen_piece+ '_' + color)
-        this.moves.push(promotion)
         this.update_status(color)
     }
 

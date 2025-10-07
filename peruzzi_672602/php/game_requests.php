@@ -93,9 +93,8 @@ function send_status_request()
     $time_increment = json_decode($_POST['time_increment']);
     $board = json_decode($_POST['board']);
     $turn = json_decode($_POST['turn']);
-    $moves = json_decode($_POST['moves']);
 
-    $_SESSION['game_status'] = new Game_status($white_player, $black_player, $initial_time, $time_increment, $board, $turn, $moves);
+    $_SESSION['game_status'] = new Game_status($white_player, $black_player, $initial_time, $time_increment, $board, $turn);
 }
 
 function send_time_request()
@@ -278,19 +277,6 @@ function register_game($elo){
         $stmt->bindParam(':mode',$mode);
         $stmt->bindParam(':winner',$_SESSION['game_status']->end_game_status['color']);
         $stmt->execute();
-        
-        $stmt = $pdo->prepare("SELECT MAX(id) AS id FROM Games");
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $game_id = ($row === false || $row['id'] === null)? 0 : ((int) $row['id']) + 1;
-
-        $stmt = $pdo->prepare('INSERT INTO Moves(game_id,move_id,move)
-                               VALUES(:game:id,:move_id,:move');
-
-        $moves = $_SESSION['game_info']->moves;
-        for($i = 0; $moves->length(); ++$i){
-            //TODO inserire le moves
-        }
 
         $pdo->commit();
         $conn->kill();
